@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class Dropdown : MonoBehaviour
 {
-    [SerializeField] private int _drops;
-    [SerializeField] private TMP_Dropdown _dropdown;
-    [SerializeField] private bool _hour = false;
-    private string lastText;
+    [Range(0,59)]
+    [SerializeField] private int drops; // nobre de case dans le dropdown
+    [SerializeField] private TMP_Dropdown dropdown;
+    [SerializeField] private bool hour = false;
+    private string _lastText;
     
     
     // Start is called before the first frame update
     void Start()
     {
         InitializedList();
-        _dropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(_dropdown); });
+        dropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropdown); });
     }
 
     // Update is called once per frame
@@ -26,20 +28,20 @@ public class Dropdown : MonoBehaviour
 
     void InitializedList()
     {
-        if (_hour)
+        if (hour)
         {
-            lastText = "Hours";
+            _lastText = "Hours";
         }
-        if (!_hour)
+        if (!hour)
         {
-            lastText = "Minutes";
+            _lastText = "Minutes";
         }
         
-        for (int i = 0; i < _drops; i++)
+        for (int i = 0; i < drops; i++)
         {
             TMP_Dropdown.OptionData time = new();
-            time.text = i.ToString() + " " + lastText;
-            _dropdown.options.Add(time);
+            time.text = i.ToString() + " " + _lastText;
+            dropdown.options.Add(time);
         }
     }
     
@@ -52,6 +54,6 @@ public class Dropdown : MonoBehaviour
         string number = dropdown.options[index].text.Split(" ")[0];
         
         // Affiche le texte dans la console (ou utilisez-le comme vous le souhaitez)
-        Chrono.Instance.ChangeChrono(number, _hour);
+        Chrono.Instance.ChangeChrono(number, hour);
     }
 }
