@@ -53,7 +53,7 @@ public class Dropdown : MonoBehaviour
         // Récupère le texte de l'option sélectionnée
         string number = dropdown.options[index].text.Split(" ")[0];
         
-        // Affiche le texte dans la console (ou utilisez-le comme vous le souhaitez)
+        // Affiche le texte dans l'UI (ou utilisez-le comme vous le souhaitez)
         Chrono.Instance.ChangeChrono(number, hour);
     }
 }

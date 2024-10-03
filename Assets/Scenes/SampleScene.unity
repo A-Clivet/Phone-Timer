@@ -726,7 +726,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 110, y: 30}
+  m_SizeDelta: {x: 115, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294852431
 MonoBehaviour:
@@ -832,9 +832,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681a08beba95ce24b8868f9c76a2accb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _drops: 24
-  _dropdown: {fileID: 294852431}
-  _hour: 1
+  drops: 20
+  dropdown: {fileID: 294852431}
+  hour: 1
 --- !u!1 &325012988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,7 +1880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a2e0fddc105ec4a906bb03882d7baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chronoUI: {fileID: 742204158}
+  chronoUI: {fileID: 742204158}
 --- !u!1 &840423207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,7 +2287,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 110, y: 30}
+  m_SizeDelta: {x: 115, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1302563259
 MonoBehaviour:
@@ -2393,9 +2393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681a08beba95ce24b8868f9c76a2accb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _drops: 60
-  _dropdown: {fileID: 1302563259}
-  _hour: 0
+  drops: 59
+  dropdown: {fileID: 1302563259}
+  hour: 0
 --- !u!1 &1340566511
 GameObject:
   m_ObjectHideFlags: 0

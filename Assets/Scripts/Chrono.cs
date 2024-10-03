@@ -11,7 +11,7 @@ public class Chrono : MonoBehaviour
     
     public static Chrono Instance;
 
-    private string[] _timerUI;
+    private string _timerUI;
     private float _timer = 0;
     
 
@@ -29,7 +29,7 @@ public class Chrono : MonoBehaviour
 
     private void Start()
     {
-        _timerUI = chronoUI.text.Split(" : ");
+        // _timerUI = chronoUI.text.Split(" : ");
     }
 
     // Update is called once per frame
@@ -41,8 +41,12 @@ public class Chrono : MonoBehaviour
             //timer -= Time.deltaTime;
             
             // Affiche le temps restant
-            _timerUI[0] = (_timer%3600).ToString("F0");
-            _timerUI[1] = (_timer%60).ToString("F0");
+
+            _timerUI = (_timer % 3600).ToString("F0") + " : " + (_timer % 60).ToString("F0");
+
+            // _timerUI[0] = (_timer%3600).ToString("F0");
+            // _timerUI[1] = (_timer%60).ToString("F0");
+
 
         }
         else
@@ -53,24 +57,52 @@ public class Chrono : MonoBehaviour
 
     public void ChangeChrono(string number, bool hour)
     {
-        if (int.Parse(number) < 10)
+        if(hour)
         {
-            number = "0" + number;
-        }
-        
-        
-        if (hour)
-        {
-            _timerUI[0] = number;
+            _timer += int.Parse(number) * 60 * 60 * 60 * 60;
         }
         else
         {
-            _timerUI[1] = number;
+            _timer += int.Parse(number) * 60 * 60 * 60;
         }
 
-        chronoUI.text = _timerUI[0] + " : " + _timerUI[1];
-        
-        _timer = float.Parse(_timerUI[1]) * 60 + float.Parse(_timerUI[0]) * 60 * 60;
+
+        string hoursUI = (_timer / 12960000).ToString("F0");
+        string minutesUI = (_timer % 12960000 / 216000).ToString("F0");
+
+        if (int.Parse(hoursUI) < 10)
+        {
+            hoursUI = "0" + hoursUI;
+        }
+        if (int.Parse(minutesUI) < 10)
+        {
+            minutesUI = "0" + minutesUI;
+        }
+
+        chronoUI.text = hoursUI + " : " + minutesUI;
+
+
+
+
+
+        // if (int.Parse(number) < 10)
+        // {
+        //     number = "0" + number;
+        // }
+
+
+        // if (hour)
+        // {
+        //     _timerUI[0] = number;
+        // }
+        // else
+        // {
+        //     _timerUI[1] = number;
+        // }
+
+        //chronoUI.text = _timerUI[0] + " : " + _timerUI[1];
+
+        // _timer = float.Parse(_timerUI[1]) * 60 + float.Parse(_timerUI[0]) * 60 * 60;
     }
     
 
