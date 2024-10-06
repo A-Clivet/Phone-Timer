@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 public class Dropdown : MonoBehaviour
 {
-    [Range(0,59)]
+    [Range(0,60)]
     [SerializeField] private int drops; // nobre de case dans le dropdown
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private bool hour = false;
@@ -19,13 +19,6 @@ public class Dropdown : MonoBehaviour
         InitializedList();
         dropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropdown); });
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void InitializedList()
     {
         if (hour)

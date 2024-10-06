@@ -10,10 +10,13 @@ public class Chrono : MonoBehaviour
     [SerializeField] private TextMeshProUGUI chronoUI;
     
     public static Chrono Instance;
+    public bool _timerIsRunning = false;
+    
 
     private string _timerUI;
-    private float _timer = 0;
-    
+    private float _timeRemaining = 0;
+    private float _hourTimer = 0;
+    private float _minuteTimer = 0;
 
     private void Awake()
     {
@@ -35,23 +38,25 @@ public class Chrono : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_timer > 0)
+        // Si le timer est actif
+        if (_timerIsRunning)
         {
-            // Réduire le temps avec deltaTime
-            //timer -= Time.deltaTime;
-            
-            // Affiche le temps restant
-
-            _timerUI = (_timer % 3600).ToString("F0") + " : " + (_timer % 60).ToString("F0");
-
-            // _timerUI[0] = (_timer%3600).ToString("F0");
-            // _timerUI[1] = (_timer%60).ToString("F0");
-
-
-        }
-        else
-        {
-           // couper le telephone
+            if (_timeRemaining > 0)
+            {
+                // Compte à rebours
+                _timeRemaining -= Time.deltaTime;
+                UpdateTimerDisplay();
+            }
+            else
+            {
+                // Si le temps est écoulé
+                _timeRemaining = 0;
+                _timerIsRunning = false;
+                UpdateTimerDisplay();
+                
+                OnTimerEnd();
+                
+            }
         }
     }
 
@@ -59,60 +64,39 @@ public class Chrono : MonoBehaviour
     {
         if(hour)
         {
-            _timer += int.Parse(number) * 60 * 60 * 60 * 60;
+            _hourTimer = int.Parse(number) * 60 * 60;
         }
         else
         {
-            _timer += int.Parse(number) * 60 * 60 * 60;
+            _minuteTimer = int.Parse(number) * 60;
         }
 
+        _timeRemaining = _minuteTimer + _hourTimer;
 
-        string hoursUI = (_timer / 12960000).ToString("F0");
-        string minutesUI = (_timer % 12960000 / 216000).ToString("F0");
-
-        if (int.Parse(hoursUI) < 10)
-        {
-            hoursUI = "0" + hoursUI;
-        }
-        if (int.Parse(minutesUI) < 10)
-        {
-            minutesUI = "0" + minutesUI;
-        }
-
-        chronoUI.text = hoursUI + " : " + minutesUI;
-
-
-
-
-
-        // if (int.Parse(number) < 10)
-        // {
-        //     number = "0" + number;
-        // }
-
-
-        // if (hour)
-        // {
-        //     _timerUI[0] = number;
-        // }
-        // else
-        // {
-        //     _timerUI[1] = number;
-        // }
-
-        //chronoUI.text = _timerUI[0] + " : " + _timerUI[1];
-
-        // _timer = float.Parse(_timerUI[1]) * 60 + float.Parse(_timerUI[0]) * 60 * 60;
+        UpdateTimerDisplay();
     }
-    
+
+
+    void UpdateTimerDisplay()
+    {
+        // Calcul des heures
+        int hours = Mathf.FloorToInt(_timeRemaining / 3600);  // Diviser par 3600 pour obtenir les heures
+
+        // Calcul des minutes restantes après avoir retiré les heures
+        int minutes = Mathf.FloorToInt((_timeRemaining % 3600) / 60);  // Obtenir le reste après avoir retiré les heures, puis diviser par 60 pour obtenir les minutes
+
+        // Afficher le timer au format HH:MM
+        chronoUI.text = string.Format("{0:00}:{1:00}", hours, minutes);
+    }
 
     public void StartTimer()
     {
         //StartCoroutine(Timer());
     }
 
-    // IEnumerator Timer()
-    // {
-    //     yield return new WaitForSeconds(timer);
-    // }
+    void OnTimerEnd()
+    {
+        // couper le telephone
+        
+    }
 }
