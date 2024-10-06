@@ -471,6 +471,7 @@ GameObject:
   - component: {fileID: 242231576}
   - component: {fileID: 242231575}
   - component: {fileID: 242231574}
+  - component: {fileID: 242231577}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -541,7 +542,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 242231575}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 242231577}
+        m_TargetAssemblyTypeName: ButtonManage, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &242231575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +593,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242231572}
   m_CullTransparentMesh: 1
+--- !u!114 &242231577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242231572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a588250f9262a294c8971ef6bd92a5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &253844908
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +751,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 115, y: 30}
+  m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294852431
 MonoBehaviour:
@@ -832,7 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681a08beba95ce24b8868f9c76a2accb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drops: 20
+  drops: 21
   dropdown: {fileID: 294852431}
   hour: 1
 --- !u!1 &325012988
@@ -1881,6 +1906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chronoUI: {fileID: 742204158}
+  _timerIsRunning: 0
 --- !u!1 &840423207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,7 +2313,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 115, y: 30}
+  m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1302563259
 MonoBehaviour:
@@ -2393,7 +2419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681a08beba95ce24b8868f9c76a2accb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drops: 59
+  drops: 60
   dropdown: {fileID: 1302563259}
   hour: 0
 --- !u!1 &1340566511
