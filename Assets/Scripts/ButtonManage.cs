@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class ButtonManage : MonoBehaviour
 {
-    private Chrono _chrono;
-    
-    
     public void StartTimer()
     {
-        _chrono._timerIsRunning = true;
+        Chrono.Instance._timerIsRunning = true;
     }
     
     public void ResumeTimer()
     {
-        _chrono._timerIsRunning = !_chrono._timerIsRunning;
+        Chrono.Instance._timerIsRunning = !Chrono.Instance._timerIsRunning;
     }
 }

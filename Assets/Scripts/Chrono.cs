@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.Notifications.Android;
 using UnityEngine.Serialization;
 
 public class Chrono : MonoBehaviour
@@ -44,6 +45,7 @@ public class Chrono : MonoBehaviour
             if (_timeRemaining > 0)
             {
                 // Compte à rebours
+                Debug.Log(_timeRemaining);
                 _timeRemaining -= Time.deltaTime;
                 UpdateTimerDisplay();
             }
@@ -89,14 +91,10 @@ public class Chrono : MonoBehaviour
         chronoUI.text = string.Format("{0:00}:{1:00}", hours, minutes);
     }
 
-    public void StartTimer()
-    {
-        //StartCoroutine(Timer());
-    }
 
     void OnTimerEnd()
     {
         // couper le telephone
-        
+        AndroidSleepMode.Instance.LockScreen();
     }
 }
